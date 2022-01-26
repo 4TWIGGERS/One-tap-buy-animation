@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 
+import Imagee from "./components/Image";
+import NameAndDescription from "./components/NameAndDescription";
+import Rating from "./components/Rating";
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <Imagee />
+      <NameAndDescription />
+      <Rating />
+      <StatusBar style="light" hidden />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#1F2029",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
