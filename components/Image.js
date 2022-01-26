@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     // alignSelf: "center",
     width: "92%",
     marginLeft: 15,
-    bottom: 25,
+    bottom: 55,
   },
 });
