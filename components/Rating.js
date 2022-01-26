@@ -3,7 +3,7 @@ import React from "react";
 
 const Rating = () => {
   return (
-    <View>
+    <View style={{ bottom: 80, width: "100%", paddingHorizontal: 20 }}>
       <Text style={styles.headText}>Ratings and Reviews</Text>
       <View style={styles.ratingsBackground}>
         <View style={styles.TextContainer}>
@@ -18,9 +18,11 @@ const Rating = () => {
               <Text
                 style={{
                   color: "white",
-                  fontSize: 14,
+                  fontSize: 17,
                   fontWeight: "700",
                   alignSelf: "center",
+                  fontFamily: "Regular",
+                  left: 5,
                 }}
               >
                 Reviews
@@ -34,7 +36,7 @@ const Rating = () => {
               }}
             >
               <Image
-                style={{ alignSelf: "center" }}
+                style={{ alignSelf: "center", left: 5 }}
                 source={require("../assets/zvezda.png")}
               />
             </View>
@@ -52,11 +54,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     marginTop: 15,
-    marginLeft: 20,
+    fontFamily: "Regular",
   },
   ratingsBackground: {
     backgroundColor: "#2A2D3A",
-    width: "92%",
+    width: "100%",
     height: 130,
     borderRadius: 16,
     marginTop: 15,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   cou: {
     color: "#7669D2",
     fontSize: 20,
-    fontWeight: "600",
+    fontFamily: "Bold",
   },
   counts: {
     flexDirection: "row",

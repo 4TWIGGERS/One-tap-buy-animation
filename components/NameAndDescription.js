@@ -19,6 +19,7 @@ const NameAndDescription = () => {
           marginHorizontal: 20,
           marginTop: 10,
           lineHeight: 22,
+          fontFamily: "Regular",
         }}
       >
         Gothic is a fantasy-themed action role-playing video game for Microsoft
@@ -31,7 +32,7 @@ const NameAndDescription = () => {
 export default NameAndDescription;
 
 const styles = StyleSheet.create({
-  container: { marginTop: 20 },
+  container: { bottom: 80 },
   bothTexts: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     color: "white",
     marginHorizontal: 20,
     fontWeight: "600",
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily: "Regular",
   },
 });

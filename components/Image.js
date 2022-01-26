@@ -14,9 +14,12 @@ export default Imagee;
 const styles = StyleSheet.create({
   container: {},
   ImageStyle: {
-    height: 331,
-    marginTop: 40,
+    // height: 331,
+
     resizeMode: "contain",
-    alignSelf: "center",
+    // alignSelf: "center",
+    width: "92%",
+    marginLeft: 15,
+    bottom: 25,
   },
 });
