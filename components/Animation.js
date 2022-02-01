@@ -119,8 +119,8 @@ export default function Cart() {
           checkIconTranslateValue.value = withSequence(
             withSpring(20, {
               damping: 15,
-              mass: 0.6,
-              stiffness: 200,
+              mass: 0.4,
+              stiffness: 100,
               overshootClamping: false,
               restDisplacementThreshold: 0.1,
               restSpeedThreshold: 8,
