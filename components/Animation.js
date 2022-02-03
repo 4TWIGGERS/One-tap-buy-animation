@@ -196,7 +196,7 @@ export default function Cart() {
             ]}
           >
             <Text style={{ color: "#2A2D3A", fontSize: 16, fontWeight: "700" }}>
-              Yeeeey!
+              Yaaaay!
             </Text>
           </Animated.View>
           <Animated.View
