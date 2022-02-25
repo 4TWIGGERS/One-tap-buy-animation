@@ -20,6 +20,8 @@ import Animated, {
 
 const { width } = Dimensions.get("screen");
 
+const [click, setClick] = useState(false);
+
 export default function Cart() {
   const buttonWidthValue = useSharedValue(width - 40);
   const cardIconScaleValue = useSharedValue(1);
@@ -80,7 +82,7 @@ export default function Cart() {
     } else if (textValue.value === 2) {
       return `Yaay!`;
     } else if (textValue.value === 3) {
-      return `View the Receipt`;
+      return `1-tap buy`;
     }
   }, [textValue.value]);
 
@@ -90,16 +92,7 @@ export default function Cart() {
         onPress={() => {
           firstTextOpacityValue.value = withDelay(
             100,
-            withTiming(
-              0,
-              { duration: 100 }
-              // , () => {
-              //   secondTextOpacityValue.value = withDelay(
-              //     100,
-              //     withTiming(1, { duration: 100 })
-              //   );
-              // }
-            )
+            withTiming(0, { duration: 100 })
           );
           secondTextOpacityValue.value = withDelay(
             100,
@@ -171,7 +164,7 @@ export default function Cart() {
           <Animated.View style={[styles.cardView, checkStyle]}>
             <Image
               source={require("../assets/23.png")}
-              style={{ height: "100%", width: "100%" }}
+              style={{ height: "100%", width: "100%", right: 20 }}
               resizeMode="cover"
             />
           </Animated.View>
