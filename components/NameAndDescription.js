@@ -11,17 +11,7 @@ const NameAndDescription = () => {
           <Text style={styles.dateText}>15 Mar, 2001</Text>
         </View>
       </View>
-      <Text
-        style={{
-          color: "#A7ABBD",
-          fontSize: 15,
-          fontWeight: "500",
-          marginHorizontal: 20,
-          marginTop: 10,
-          lineHeight: 22,
-          fontFamily: "Regular",
-        }}
-      >
+      <Text style={styles.descriptionContainer}>
         Gothic is a fantasy-themed action role-playing video game for Microsoft
         Windows developed by the German company Piranha Bytes.
       </Text>
@@ -46,6 +36,15 @@ const styles = StyleSheet.create({
   TextContainer: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  descriptionContainer: {
+    color: "#A7ABBD",
+    fontSize: 15,
+    fontWeight: "500",
+    marginHorizontal: 20,
+    marginTop: 10,
+    lineHeight: 22,
+    fontFamily: "Regular",
   },
   dateText: {
     color: "white",

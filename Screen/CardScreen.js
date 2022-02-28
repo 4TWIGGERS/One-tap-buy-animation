@@ -4,7 +4,7 @@ import React from "react";
 const CardScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Congrats! You bought a Game</Text>
+      <Text style={styles.text}>Congrats! You Bought The Game</Text>
     </View>
   );
 };
@@ -20,8 +20,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#7669D2",
-    fontSize: 60,
+    fontSize: 70,
     fontWeight: "900",
     textAlign: "center",
+    lineHeight: 220,
+    marginHorizontal: 18,
   },
 });

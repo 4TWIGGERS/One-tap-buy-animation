@@ -18,32 +18,32 @@ export default function HomeScreen(props) {
     return null;
   }
   return (
-    <View style={{ flex: 1, position: "relative" }}>
+    <View style={styles.mainContainer}>
+      <StatusBar style="light" />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <Imagee />
         <NameAndDescription />
         <Rating />
       </ScrollView>
-      <View
-        style={{
-          position: "absolute",
-          bottom: 50,
-          alignSelf: "center",
-          width: "100%",
-        }}
-      >
+      <View style={styles.CardContainer}>
         <Cart navigation={props.navigation} />
       </View>
-      <StatusBar style="light" hidden />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  mainContainer: { flex: 1, position: "relative", backgroundColor: "#1F2029" },
   container: {
     flex: 1,
     backgroundColor: "#1F2029",
-    // alignItems: "center",
-    // justifyContent: "center",
+    marginTop: 40,
+  },
+
+  CardContainer: {
+    position: "absolute",
+    bottom: 50,
+    alignSelf: "center",
+    width: "100%",
   },
 });

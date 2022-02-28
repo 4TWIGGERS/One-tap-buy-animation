@@ -3,7 +3,7 @@ import React from "react";
 
 const Rating = () => {
   return (
-    <View style={{ bottom: 80, width: "100%", paddingHorizontal: 20 }}>
+    <View style={styles.container}>
       <Text style={styles.headText}>Ratings and Reviews</Text>
       <View style={styles.ratingsBackground}>
         <View style={styles.TextContainer}>
@@ -15,28 +15,11 @@ const Rating = () => {
           <View style={styles.horizon}></View>
           <View style={styles.ReviewStar}>
             <View style={{ width: "48.5%" }}>
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 17,
-                  fontWeight: "700",
-                  alignSelf: "center",
-                  fontFamily: "Regular",
-                  left: 5,
-                }}
-              >
-                Reviews
-              </Text>
+              <Text style={styles.Review}>Reviews</Text>
             </View>
-            <View
-              style={{
-                width: "48.5%",
-                position: "absolute",
-                right: 0,
-              }}
-            >
+            <View style={styles.reviewContainer}>
               <Image
-                style={{ alignSelf: "center", left: 5 }}
+                style={styles.StarsPicture}
                 source={require("../assets/zvezda.png")}
               />
             </View>
@@ -50,6 +33,7 @@ const Rating = () => {
 export default Rating;
 
 const styles = StyleSheet.create({
+  container: { bottom: 80, width: "100%", paddingHorizontal: 20 },
   headText: {
     color: "white",
     fontSize: 18,
@@ -96,4 +80,19 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 70,
   },
+  Review: {
+    color: "white",
+    fontSize: 17,
+    fontWeight: "700",
+    alignSelf: "center",
+    fontFamily: "Regular",
+    left: 5,
+  },
+  reviewContainer: {
+    width: "48.5%",
+    position: "absolute",
+    right: 0,
+  },
+
+  StarsPicture: { alignSelf: "center", left: 5 },
 });
