@@ -9,20 +9,16 @@ import {
 import React, { useState } from "react";
 import Animated, {
   useAnimatedStyle,
-  useDerivedValue,
   useSharedValue,
   withDelay,
   withSequence,
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-// import ReText from "./ReText";
 
 const { width } = Dimensions.get("screen");
 
-const [click, setClick] = useState(false);
-
-export default function Cart() {
+export default function Cart({ navigation }) {
   const buttonWidthValue = useSharedValue(width - 40);
   const cardIconScaleValue = useSharedValue(1);
   const cardIconTranslateXValue = useSharedValue(0);
@@ -33,6 +29,8 @@ export default function Cart() {
   const firstTextOpacityValue = useSharedValue(1);
   const secondTextOpacityValue = useSharedValue(0);
   const thirdTextOpacityValue = useSharedValue(0);
+
+  const [isClicked, setIsClicked] = useState(false);
 
   const buttonStyle = useAnimatedStyle(() => {
     return {
@@ -76,77 +74,72 @@ export default function Cart() {
     };
   });
 
-  const formattedPrice = useDerivedValue(() => {
-    if (textValue.value === 1) {
-      return `1-tap buy`;
-    } else if (textValue.value === 2) {
-      return `Yaay!`;
-    } else if (textValue.value === 3) {
-      return `1-tap buy`;
-    }
-  }, [textValue.value]);
-
   return (
     <View style={styles.cont}>
       <TouchableOpacity
         onPress={() => {
-          firstTextOpacityValue.value = withDelay(
-            100,
-            withTiming(0, { duration: 100 })
-          );
-          secondTextOpacityValue.value = withDelay(
-            100,
-            withTiming(1, { duration: 100 }, () => {
-              secondTextOpacityValue.value = withDelay(
-                1000,
-                withTiming(0, { duration: 100 })
-              );
-            })
-          );
-          thirdTextOpacityValue.value = withDelay(
-            1150,
-            withTiming(1, { duration: 100 })
-          );
+          if (!isClicked) {
+            firstTextOpacityValue.value = withDelay(
+              100,
+              withTiming(0, { duration: 100 })
+            );
+            secondTextOpacityValue.value = withDelay(
+              100,
+              withTiming(1, { duration: 100 }, () => {
+                secondTextOpacityValue.value = withDelay(
+                  1000,
+                  withTiming(0, { duration: 100 })
+                );
+              })
+            );
+            thirdTextOpacityValue.value = withDelay(
+              1150,
+              withTiming(1, { duration: 100 })
+            );
 
-          // secondTextOpacityValue.value = withSequence(withTiming(0,{duration:100}), withTiming(1, {duration:100}),withTiming(1,{duration:1100}) )
-          checkIconTranslateValue.value = withSequence(
-            withSpring(20, {
-              damping: 15,
-              mass: 0.4,
-              stiffness: 100,
-              overshootClamping: false,
-              restDisplacementThreshold: 0.1,
-              restSpeedThreshold: 8,
-            }),
-            withTiming(20, { duration: 500 }),
-            withTiming(-140, { duration: 350 })
-          );
+            // secondTextOpacityValue.value = withSequence(withTiming(0,{duration:100}), withTiming(1, {duration:100}),withTiming(1,{duration:1100}) )
+            checkIconTranslateValue.value = withSequence(
+              withSpring(20, {
+                damping: 15,
+                mass: 0.4,
+                stiffness: 100,
+                overshootClamping: false,
+                restDisplacementThreshold: 0.1,
+                restSpeedThreshold: 8,
+              }),
+              withTiming(20, { duration: 500 }),
+              withTiming(-140, { duration: 350 })
+            );
 
-          buttonWidthValue.value = withSequence(
-            withTiming(width + 50, { duration: 400 }),
-            withTiming(width + 50, { duration: 700 }),
-            withTiming(width - 40, { duration: 300 })
-          );
-          textValue.value = withSequence(
-            withTiming(1, { duration: 100 }),
-            withTiming(2, { duration: 100 }),
-            withTiming(3, { duration: 900 })
-          );
-          overlayOpacityValue.value = withDelay(500, withTiming(0, 10));
-          cardIconOpacity.value = withDelay(
-            1100,
-            withTiming(0, { duration: 300 })
-          );
-          cardIconTranslateXValue.value = withSequence(
-            withTiming(-50, { duration: 300 }),
-            withTiming(-50, { duration: 400 }),
-            withTiming(70, { duration: 200 })
-          );
-          cardIconScaleValue.value = withSequence(
-            withTiming(40, { duration: 400 }),
-            withTiming(40, { duration: 700 }),
-            withTiming(0, { duration: 300 })
-          );
+            buttonWidthValue.value = withSequence(
+              withTiming(width + 50, { duration: 400 }),
+              withTiming(width + 50, { duration: 700 }),
+              withTiming(width - 40, { duration: 300 })
+            );
+            textValue.value = withSequence(
+              withTiming(1, { duration: 100 }),
+              withTiming(2, { duration: 100 }),
+              withTiming(3, { duration: 900 })
+            );
+            overlayOpacityValue.value = withDelay(500, withTiming(0, 10));
+            cardIconOpacity.value = withDelay(
+              1100,
+              withTiming(0, { duration: 300 })
+            );
+            cardIconTranslateXValue.value = withSequence(
+              withTiming(-50, { duration: 300 }),
+              withTiming(-50, { duration: 400 }),
+              withTiming(70, { duration: 200 })
+            );
+            cardIconScaleValue.value = withSequence(
+              withTiming(40, { duration: 400 }),
+              withTiming(40, { duration: 700 }),
+              withTiming(0, { duration: 300 })
+            );
+            setIsClicked(true);
+          } else if (isClicked) {
+            navigation.navigate("Card");
+          }
         }}
         activeOpacity={1}
       >
@@ -194,11 +187,20 @@ export default function Cart() {
           </Animated.View>
           <Animated.View
             style={[
-              { position: "absolute", alignSelf: "center" },
+              {
+                position: "absolute",
+                alignSelf: "center",
+              },
               thirdTextStyle,
             ]}
           >
-            <Text style={{ color: "white", fontSize: 16, fontWeight: "700" }}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 16,
+                fontWeight: "700",
+              }}
+            >
               View the Receipt
             </Text>
           </Animated.View>
@@ -224,6 +226,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderColor: "#5447B1",
     borderWidth: 1,
+    backgroundColor: "#1F2029",
   },
   bgOverlay: {
     position: "absolute",

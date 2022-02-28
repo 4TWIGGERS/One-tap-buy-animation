@@ -7,7 +7,7 @@ import NameAndDescription from "../components/NameAndDescription";
 import Rating from "../components/Rating";
 import { useFonts } from "expo-font";
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   const [loaded] = useFonts({
     Bold: require("../fonts/Lato-Bold.ttf"),
     Regular: require("../fonts/Lato-Regular.ttf"),
@@ -32,7 +32,7 @@ export default function HomeScreen() {
           width: "100%",
         }}
       >
-        <Cart />
+        <Cart navigation={props.navigation} />
       </View>
       <StatusBar style="light" hidden />
     </View>
